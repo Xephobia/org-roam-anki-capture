@@ -1,5 +1,5 @@
 ;;; org-roam-anki-capture.el --- capture anki flashcards that links to org-roam notes  -*- lexical-binding: t; -*-
-
+;; Package-Requires: ((org-roam) (anki-editor))
 ;; Copyright (C) 2024  
 
 ;; Author: Xephobia
