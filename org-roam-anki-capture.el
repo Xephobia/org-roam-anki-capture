@@ -15,6 +15,7 @@
   :type '(string))
 
 (defun org-roam-anki--get-contents ()
+  "Generate a note interactively in anki-editor's format and return a string."
   (let*
     ((deck
       (completing-read "Deck: "
@@ -45,12 +46,13 @@
 
 (defun org-roam-anki-capture--get-template ()
    `(("a" "anki card" plain #'org-roam-anki--get-contents
-	 :target (file ,(file-name-concat org-roam-anki-capture-directory "${id}.org"))))
+	 :target (file ,(file-name-concat org-roam-anki-capture-directory "${id}.org")))))
     
 
 (defun org-roam-anki-capture-current-file (&optional goto keys)
+  "Capture an anki-editor note and link it to the current org-roam node"
   (interactive)
-  (let ((org-roam-directory (expand-file-name org-roam-anki-directory org-roam-directory)))
+  (let ((org-roam-directory (expand-file-name org-roam-anki-capture-directory org-roam-directory)))
     (org-roam-capture- :goto (when goto '(4))
 		       :keys keys
 		       :node (org-roam-node-create)
